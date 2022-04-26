@@ -134,7 +134,10 @@ export class DMs {
                 invite: [userId],
                 is_direct: true,
                 preset: "trusted_private_chat",
-                initial_state: hasKeys ? [{type: "m.room.encryption", state_key: "", content: {algorithm: EncryptionAlgorithm.MegolmV1AesSha2}}] : [],
+                initial_state: hasKeys ? [
+                    {type: "m.room.encryption", state_key: "", content: {algorithm: EncryptionAlgorithm.MegolmV1AesSha2}},
+                    {type: "m.room.guest_access", state_key: "", content: {guest_access: "can_join"}},    
+                ] : [],
             });
         }
 
